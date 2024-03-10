@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BugTracker.DataModel;
 
@@ -7,7 +8,8 @@ public partial class TicketHistory
 {
     public int Id { get; set; }
 
-    public string ChangedDate { get; set; } = null!;
+    [Column(TypeName = "text")]
+    public DateTime ChangedDate { get; set; }
 
     public int? TicketId { get; set; }
 
@@ -19,7 +21,8 @@ public partial class TicketHistory
 
     public int? ServiceComponentId { get; set; }
 
-    public string? Deadline { get; set; }
+    [Column(TypeName = "text")]
+    public DateTime? Deadline { get; set; }
 
     public virtual TicketPriority? Priority { get; set; }
 

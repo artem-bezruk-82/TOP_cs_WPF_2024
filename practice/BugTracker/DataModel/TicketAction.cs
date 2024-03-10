@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BugTracker.DataModel;
 
@@ -11,7 +12,8 @@ public partial class TicketAction
 
     public string? DetailedDescription { get; set; }
 
-    public string CreatedDate { get; set; } = null!;
+    [Column(TypeName = "text")]
+    public DateTime CreatedDate { get; set; }
 
     public int? TicketId { get; set; }
 

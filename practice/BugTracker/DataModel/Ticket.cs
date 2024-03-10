@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BugTracker.DataModel;
 
@@ -23,11 +24,13 @@ public partial class Ticket
 
     public int? OpenedByLoginId { get; set; }
 
-    public string CreatedDate { get; set; } = null!;
+    [Column(TypeName = "text")]
+    public DateTime CreatedDate { get; set; }
 
     public int? DeadlineId { get; set; }
 
-    public string? DeadlineDate { get; set; }
+    [Column(TypeName = "text")]
+    public DateTime? DeadlineDate { get; set; }
 
     public virtual TicketDeadline? Deadline { get; set; }
 

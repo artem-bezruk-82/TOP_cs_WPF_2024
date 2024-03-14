@@ -21,5 +21,39 @@ namespace BugTracker.Present
             }
             return services;
         }
+
+        public static (bool result, string message) UpdateDB(Service service)
+        {
+            string msg = string.Empty;
+            using (BugTrackerContext db = new BugTrackerContext())
+            {
+                if (db.Services is null)
+                {
+                    msg = "Table does not exist in database";
+                    return (false, msg);
+                }
+
+                Service serviceToUpdate = db.Services.First(s => s.Id == service.Id);
+                if (serviceToUpdate != null)
+                {
+                    try
+                    {
+                        serviceToUpdate.Name = service.Name;
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        msg = ex.InnerException?.Message ?? string.Empty;
+                        return (false, msg);
+                    }
+                }
+                else
+                {
+                    msg = "Entry you are trying to update does not exists in database";
+                    return (false, msg);
+                }
+            }
+            return (true, msg);
+        }
     }
 }

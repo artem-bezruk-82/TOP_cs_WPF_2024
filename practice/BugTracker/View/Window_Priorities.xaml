@@ -5,18 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BugTracker.View"
         mc:Ignorable="d"
-        Title="Priorities" Height="450" Width="278">
+        Title="Priorities" 
+        SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style
+            TargetType="Button"
+        >
+            <Setter Property="Control.Margin" Value="3"/>
+            <Setter Property="ItemsControl.Width" Value="65"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="29*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBox HorizontalAlignment="Left" Margin="79,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2" Height="18"/>
-
-
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel MinWidth="150" MaxWidth="256">
+                <TextBox
+                    x:Name="textBox_UserInput"
+                    Margin="3"
+                >
+                    <TextBox.Background>
+                        <VisualBrush
+                            Stretch="None"
+                            AlignmentX="Left"
+                        >
+                            <VisualBrush.Visual>
+                                <TextBox
+                                x:Name="textBox_Watermark"
+                                Foreground="LightGray"
+                                HorizontalAlignment="Left"
+                                BorderThickness="0"
+                                FontSize="10"
+                                Text="Please enter priority name"
+                                />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </TextBox.Background>
+                </TextBox>
+                <WrapPanel Background="Gray" Margin="3">
+                    <Button
+                        x:Name="button_Save"
+                        Content="Save"
+                        Visibility="Collapsed"
+                    />
+                    <Button
+                        x:Name="button_Cancel"
+                        Content="Cancel"
+                    />
+                </WrapPanel>
+                <ListBox
+                    x:Name="listBox_Priorities"
+                    MinHeight="64"
+                    MaxHeight="128"
+                    Margin="3"
+                >
+                </ListBox>
+                <WrapPanel Background="Gray" Margin="3">
+                    <Button
+                        x:Name="button_Add"
+                        Content="Add"
+                    />
+                    <Button
+                        x:Name="button_Edit"
+                        Content="Edit"
+                        Visibility="Collapsed"
+                    />
+                    <Button
+                        x:Name="button_Remove"
+                        Content="Remove"
+                        Visibility="Collapsed"
+                    />
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

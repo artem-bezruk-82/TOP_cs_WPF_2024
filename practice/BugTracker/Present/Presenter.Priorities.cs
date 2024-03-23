@@ -39,9 +39,14 @@ namespace BugTracker.Present
             return ticketPriority;
         }
 
-        public static (bool result, string message) AddToDB(TicketPriority priority)
+        public static (bool result, string message) AddToDB(TicketPriority? priority)
         {
             string msg = string.Empty;
+            if (priority is null) 
+            {
+                msg = "Null entries are not allowed";
+                return (false, msg);
+            }
             using (BugTrackerContext db = new BugTrackerContext())
             {
                 if (db.TicketPriorities != null)

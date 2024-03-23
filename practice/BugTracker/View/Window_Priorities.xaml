@@ -14,13 +14,21 @@
             <Setter Property="Control.Margin" Value="3"/>
             <Setter Property="ItemsControl.Width" Value="65"/>
         </Style>
+        <DataTemplate
+            x:Key="listBox_DataTemplate"
+        >
+            <TextBlock 
+                Text="{Binding Path=Name}"
+                HorizontalAlignment="Left"
+            />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel MinWidth="150" MaxWidth="256">
+            <StackPanel MinWidth="200" MaxWidth="300">
                 <TextBox
                     x:Name="textBox_UserInput"
-                    Margin="3"
+                    Margin="3" TextChanged="textBox_UserInput_TextChanged"
                 >
                     <TextBox.Background>
                         <VisualBrush
@@ -43,35 +51,34 @@
                 <WrapPanel Background="Gray" Margin="3">
                     <Button
                         x:Name="button_Save"
-                        Content="Save"
-                        Visibility="Collapsed"
+                        Content="Save" Click="button_Save_Click"
                     />
                     <Button
                         x:Name="button_Cancel"
-                        Content="Cancel"
+                        Content="Cancel" Click="button_Cancel_Click"
                     />
                 </WrapPanel>
                 <ListBox
                     x:Name="listBox_Priorities"
-                    MinHeight="64"
-                    MaxHeight="128"
-                    Margin="3"
+                    ItemTemplate="{StaticResource listBox_DataTemplate}"
+                    Height="128"
+                    Margin="3" 
+                    SelectionChanged="listBox_Priorities_SelectionChanged"
+                    SelectionMode="Multiple"
                 >
                 </ListBox>
                 <WrapPanel Background="Gray" Margin="3">
                     <Button
                         x:Name="button_Add"
-                        Content="Add"
+                        Content="Add" Click="button_Add_Click"
                     />
                     <Button
                         x:Name="button_Edit"
                         Content="Edit"
-                        Visibility="Collapsed"
                     />
                     <Button
                         x:Name="button_Remove"
-                        Content="Remove"
-                        Visibility="Collapsed"
+                        Content="Remove" Click="button_Remove_Click"
                     />
                 </WrapPanel>
             </StackPanel>

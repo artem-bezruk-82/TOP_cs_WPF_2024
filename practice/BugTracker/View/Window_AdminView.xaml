@@ -1,0 +1,35 @@
+﻿<Window x:Class="BugTracker.View.Window_AdminView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BugTracker.View"
+        mc:Ignorable="d"
+        Title="Window_AdminView" Height="450" Width="800">
+    <Grid>
+        <Menu x:Name="Menu_TopMenuBar" VerticalAlignment="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem x:Name="MenuItem_TopMenuBar_File" Header="File">
+                <MenuItem x:Name="MenuItem_TopMenuBar_File_Exit" Header="Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="MenuItem_TopMenuBar_Settings" Header="App Settings">
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Statuses" Header="Statuses"></MenuItem>
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Priorities" Header="Priorities" Click="MenuItem_TopMenuBar_Settings_Priorities_Click"></MenuItem>
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Services" Header="Services"></MenuItem>
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Types" Header="Ticket types"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="MenuItem_TopMenuBar_Help" Header="Help">
+                <MenuItem x:Name="MenuItem_TopMenuBar_Help_About" Header="About program">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="MenuItem_TopMenuBar_Login" Header="User login" HorizontalAlignment="Right">
+                <MenuItem x:Name="MenuItem_TopMenuBar_Login_Logout" Header="Logout"></MenuItem>
+            </MenuItem>
+
+        </Menu>
+    </Grid>
+</Window>

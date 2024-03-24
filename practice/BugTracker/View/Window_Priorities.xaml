@@ -25,7 +25,7 @@
     </Window.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel MinWidth="200" MaxWidth="300">
+            <StackPanel >
                 <TextBox
                     x:Name="textBox_UserInput"
                     Margin="3" TextChanged="textBox_UserInput_TextChanged"
@@ -37,12 +37,12 @@
                         >
                             <VisualBrush.Visual>
                                 <TextBox
-                                x:Name="textBox_Watermark"
-                                Foreground="LightGray"
-                                HorizontalAlignment="Left"
-                                BorderThickness="0"
-                                FontSize="10"
-                                Text="Please enter priority name"
+                                    x:Name="textBox_Watermark"
+                                    Foreground="LightGray"
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="0"
+                                    FontSize="10"
+                                    Text="Please enter priority name"
                                 />
                             </VisualBrush.Visual>
                         </VisualBrush>

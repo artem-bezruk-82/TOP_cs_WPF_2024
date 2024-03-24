@@ -22,10 +22,21 @@ namespace BugTracker
             InitializeComponent();
         }
 
-        private void MenuItem_TopMenuBar_Settings_Priorities_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Window_Hello window_Hello = new Window_Hello();
+            //window_Hello.Show();
+
             Window_Priorities window_Priorities = new Window_Priorities();
             window_Priorities.Show();
+
+            //Window_AdminView adminView = new Window_AdminView();
+            //adminView.Show();
+
+            //Window_SignIn window_SignIn = new Window_SignIn();
+            //window_SignIn.Show();
+
+            this.Close();
         }
     }
 }

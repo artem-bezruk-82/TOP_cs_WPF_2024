@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BugTracker.DataModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace BugTracker.Present
 {
@@ -20,6 +21,21 @@ namespace BugTracker.Present
                 }
             }
             return userLogins;
+        }
+
+        public static UserLogin GetUserLogin(string login) 
+        {
+            UserLogin? userLogin = new UserLogin();
+            using (BugTrackerContext db = new BugTrackerContext()) 
+            {
+                if (db.UserLogins is not null) 
+                {
+                    IQueryable<UserLogin>? userLogins = db.UserLogins.Include(l => l.LoginsPassword);
+
+                    userLogin = userLogins.First(x => x.Login == login);
+                }
+            }
+            return userLogin;
         }
     }
 }

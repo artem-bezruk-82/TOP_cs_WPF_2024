@@ -29,5 +29,18 @@ namespace BugTracker.View
             Window_Priorities window_Priorities = new Window_Priorities();
             window_Priorities.Show();
         }
+
+
+
+        private void MenuItem_TopMenuBar_Settings_Services_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_TopMenuBar_Settings_Statuses_Click(object sender, RoutedEventArgs e)
+        {
+            Window_Statuses window_Statuses = new Window_Statuses();
+            window_Statuses.Show();
+        }
     }
 }

@@ -17,9 +17,9 @@
                 <MenuItem x:Name="MenuItem_TopMenuBar_File_Exit" Header="Exit"></MenuItem>
             </MenuItem>
             <MenuItem x:Name="MenuItem_TopMenuBar_Settings" Header="App Settings">
-                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Statuses" Header="Statuses"></MenuItem>
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Statuses" Header="Statuses" Click="MenuItem_TopMenuBar_Settings_Statuses_Click"></MenuItem>
                 <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Priorities" Header="Priorities" Click="MenuItem_TopMenuBar_Settings_Priorities_Click"></MenuItem>
-                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Services" Header="Services"></MenuItem>
+                <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Services" Header="Services" Click="MenuItem_TopMenuBar_Settings_Services_Click"></MenuItem>
                 <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Types" Header="Ticket types"></MenuItem>
             </MenuItem>
             <MenuItem x:Name="MenuItem_TopMenuBar_Help" Header="Help">

@@ -171,12 +171,14 @@ namespace BugTracker.View
             var textValidation = TextIsValid();
             if (textValidation.isValid) 
             {
-                currentPriority.Name = textBox_UserInput.Text;
-
                 switch (currentOperation) 
                 {
                     case CurrentOperationsEnum.Add:
+                        currentPriority.Name = textBox_UserInput.Text;
                         TryToAdd();
+                        break;
+                    case CurrentOperationsEnum.Edit:
+                        TryToUpdate();
                         break;
                 }
                 RefreshWindow();
@@ -215,7 +217,34 @@ namespace BugTracker.View
 
         private void button_Edit_Click(object sender, RoutedEventArgs e)
         {
+            currentOperation = CurrentOperationsEnum.Edit;
+            textBox_UserInput.Visibility = Visibility.Visible;
+            button_Add.Visibility = Visibility.Collapsed;
+            button_Edit.Visibility = Visibility.Collapsed;
+            button_Remove.Visibility= Visibility.Collapsed;
+            if (listBox_Priorities.SelectedItem is TicketPriority selectedItem) 
+            {
+                currentPriority = selectedItem;
+                textBox_UserInput.Text = currentPriority.Name;
+            }
+            button_Save.Visibility = Visibility.Collapsed;
+            button_Cancel.Visibility = Visibility.Visible;
+        }
 
+        private void TryToUpdate() 
+        {
+            TicketPriority entryToUpdate = new TicketPriority(){Id = currentPriority.Id, Name = textBox_UserInput.Text};
+            var updated = Presenter.UpdateDB(entryToUpdate);
+            if (!updated.result) 
+            {
+                string msg = $"Entry [{currentPriority?.Name}] update failed:\n{updated.message}";
+                MessageBox.Show(msg);
+                errorDetection.Invoke(textBox_UserInput, true, msg);
+            } 
+            else 
+            {
+                MessageBox.Show($"Entry [{currentPriority.Name}] successfully changed by [{entryToUpdate.Name}]");
+            }
         }
     }
 }

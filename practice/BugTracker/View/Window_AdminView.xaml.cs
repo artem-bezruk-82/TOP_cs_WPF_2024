@@ -42,5 +42,11 @@ namespace BugTracker.View
             Window_Statuses window_Statuses = new Window_Statuses();
             window_Statuses.Show();
         }
+
+        private void MenuItem_TopMenuBar_Settings_Types_Click(object sender, RoutedEventArgs e)
+        {
+            Window_Types window_Types = new Window_Types();
+            window_Types.Show();
+        }
     }
 }

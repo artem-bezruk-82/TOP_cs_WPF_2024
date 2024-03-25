@@ -27,8 +27,11 @@ namespace BugTracker
             //Window_Hello window_Hello = new Window_Hello();
             //window_Hello.Show();
 
-            Window_AdminView adminView = new Window_AdminView();
-            adminView.Show();
+            //Window_AdminView adminView = new Window_AdminView();
+            //adminView.Show();
+
+            Window_Types window_Types = new Window_Types();
+            window_Types.Show();
 
             //Window_SignIn window_SignIn = new Window_SignIn();
             //window_SignIn.Show();

@@ -1,4 +1,5 @@
 ﻿using BugTracker.DataModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,60 @@ namespace BugTracker.Present
 {
     public static partial class Presenter
     {
-        public static List<Service> GetServices()
+        public static List<Service> GetServices(bool includeRelatedComponents = false)
         {
-            List<Service> services = new List<Service>();
+            List<Service> result = new List<Service>();
             using (BugTrackerContext db = new BugTrackerContext())
             {
                 if (db.Services is not null)
                 {
-                    services = db.Services.ToList();
+                    IQueryable<Service>? services = 
+                        includeRelatedComponents ? db.Services.Include(s => s.ServiceComponents) : db.Services;
+
+                    if (services is not null && services.Any()) 
+                    {
+                        result = db.Services.ToList();
+                    }
                 }
             }
-            return services;
+            return result;
+        }
+
+        public static Service? GetService(int serviceId)
+        {
+            Service? service = null;
+            using (BugTrackerContext db = new BugTrackerContext())
+            {
+                service = db.Services.First(s => s.Id == serviceId);
+            }
+            return service;
+        }
+
+        public static (bool result, string message) AddToDB(Service service)
+        {
+            string msg = string.Empty;
+            using (BugTrackerContext db = new BugTrackerContext())
+            {
+                if (db.Services != null)
+                {
+                    try
+                    {
+                        db.Services.Add(service);
+                        db.SaveChanges();
+                    }
+                    catch (Exception exc)
+                    {
+                        msg = exc.InnerException?.Message ?? string.Empty;
+                        return (false, msg);
+                    }
+                }
+                else
+                {
+                    msg = "Table does not exist in database";
+                    return (false, msg);
+                }
+            }
+            return (true, msg);
         }
 
         public static (bool result, string message) UpdateDB(Service service)
@@ -54,6 +98,38 @@ namespace BugTracker.Present
                 }
             }
             return (true, msg);
+        }
+
+        public static int Delete(Service[] services)
+        {
+            int counter = 0;
+            if (services.Length > 0)
+            {
+                foreach (Service service in services)
+                {
+                    counter += Delete(service);
+                }
+            }
+            return counter;
+        }
+
+        public static int Delete(Service service)
+        {
+            int counter = 0;
+            if (service != null)
+            {
+                using (BugTrackerContext db = new BugTrackerContext())
+                {
+                    Service? serviceToDelete = db.Services.First(s => s.Id == service.Id);
+                    if (serviceToDelete != null)
+                    {
+                        db.Services.Remove(serviceToDelete);
+                        counter++;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            return counter;
         }
     }
 }

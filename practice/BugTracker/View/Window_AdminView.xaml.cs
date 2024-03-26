@@ -34,7 +34,8 @@ namespace BugTracker.View
 
         private void MenuItem_TopMenuBar_Settings_Services_Click(object sender, RoutedEventArgs e)
         {
-
+            Window_Services window_Services = new Window_Services();
+            window_Services.Show();
         }
 
         private void MenuItem_TopMenuBar_Settings_Statuses_Click(object sender, RoutedEventArgs e)

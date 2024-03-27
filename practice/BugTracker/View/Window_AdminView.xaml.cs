@@ -49,5 +49,11 @@ namespace BugTracker.View
             Window_Types window_Types = new Window_Types();
             window_Types.Show();
         }
+
+        private void MenuItem_TopMenuBar_Access_Levels_Click(object sender, RoutedEventArgs e)
+        {
+            Window_AccessLevels window_AccessLevels = new Window_AccessLevels();
+            window_AccessLevels.Show();
+        }
     }
 }

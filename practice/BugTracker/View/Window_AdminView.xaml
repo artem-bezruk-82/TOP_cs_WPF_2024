@@ -22,6 +22,15 @@
                 <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Services" Header="Services" Click="MenuItem_TopMenuBar_Settings_Services_Click"></MenuItem>
                 <MenuItem x:Name="MenuItem_TopMenuBar_Settings_Types" Header="Ticket types" Click="MenuItem_TopMenuBar_Settings_Types_Click"></MenuItem>
             </MenuItem>
+            <MenuItem 
+                x:Name="MenuItem_TopMenuBar_Access" 
+                Header="Access"
+            >
+                <MenuItem
+                    x:Name="MenuItem_TopMenuBar_Access_Levels"
+                    Header="Access levels" Click="MenuItem_TopMenuBar_Access_Levels_Click"
+                />
+            </MenuItem>
             <MenuItem x:Name="MenuItem_TopMenuBar_Help" Header="Help">
                 <MenuItem x:Name="MenuItem_TopMenuBar_Help_About" Header="About program">
                 </MenuItem>
